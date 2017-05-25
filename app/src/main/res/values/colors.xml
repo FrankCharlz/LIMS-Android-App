@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#060d30</color>
+    <color name="colorPrimary">#0a0c17</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#a1999c</color>
 
@@ -13,6 +13,10 @@
     <color name="red.dark">#8e350101</color>
     <color name="black_88">#7f000000</color>
     <color name="black_text_color_label_tv">#8f000000</color>
+
+
+    <color name="button_light">#0b000000</color>
+    <color name="button_dark">#73000000</color>
 
 
 </resources>

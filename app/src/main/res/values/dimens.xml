@@ -12,7 +12,7 @@
     <dimen name="margin.small">2dp</dimen>
 
     <dimen name="padding.left.toolbar">8dp</dimen>
-    <dimen name="radius.small">24dp</dimen>
+    <dimen name="radius.small">4dp</dimen>
 
     <dimen name="margin">16dp</dimen>
     <dimen name="padding.medium">10dp</dimen>

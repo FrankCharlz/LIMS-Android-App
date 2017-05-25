@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">LIMS</string>
     <string name="login">Login</string>
+
+
+    <string name="test_username"></string>
+    <string name="test_password"></string>
 </resources>
