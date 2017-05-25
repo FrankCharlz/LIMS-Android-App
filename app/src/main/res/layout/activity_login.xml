@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mj.lims.LoginActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <com.mj.lims.DopeTextView
+            style="@style/ToolbarTitle"
+            android:text="@string/login"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:adjustViewBounds="true"
+                android:src="@android:drawable/btn_star_big_on"/>
+
+
+            <!-- username -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.mj.cervical.views.DopeTextView
+                    style="@style/LabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:text="Username:"/>
+
+                <EditText
+                    android:id="@+id/ed_auth_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:ems="9"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <!-- password -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.mj.cervical.views.DopeTextView
+                    style="@style/LabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:imeActionId="321321"
+                    android:imeOptions="actionSend"
+                    android:text="Password:"/> <!-- was parity -->
+
+                <EditText
+                    android:id="@+id/ed_auth_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:ems="9"
+                    android:inputType="numberPassword" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <com.mj.cervical.views.DopeTextView
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:onClick="login"
+            android:paddingBottom="10dp"
+            android:paddingLeft="36dp"
+            android:paddingRight="36dp"
+            android:paddingTop="10dp"
+            android:text="Login"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

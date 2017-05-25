@@ -1,0 +1,21 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="text.size.radios">16sp</dimen>
+    <dimen name="text.size.small">17sp</dimen>
+    <dimen name="text.size.medium">18sp</dimen>
+    <dimen name="text.size.large">20sp</dimen>
+    <dimen name="text.size.toolbar">22sp</dimen>
+
+    <dimen name="margin.small">2dp</dimen>
+
+    <dimen name="padding.left.toolbar">8dp</dimen>
+    <dimen name="radius.small">24dp</dimen>
+
+    <dimen name="margin">16dp</dimen>
+    <dimen name="padding.medium">10dp</dimen>
+
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#060d30</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#a1999c</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white89">#dcffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="transparent">#00ffffff</color>
+
+    <color name="red.dark">#8e350101</color>
+    <color name="black_88">#7f000000</color>
+    <color name="black_text_color_label_tv">#8f000000</color>
+
+
+</resources>
