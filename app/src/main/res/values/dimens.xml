@@ -7,7 +7,7 @@
     <dimen name="text.size.small">17sp</dimen>
     <dimen name="text.size.medium">18sp</dimen>
     <dimen name="text.size.large">20sp</dimen>
-    <dimen name="text.size.toolbar">22sp</dimen>
+    <dimen name="text.size.toolbar">21.6sp</dimen>
 
     <dimen name="margin.small">2dp</dimen>
 
@@ -16,6 +16,7 @@
 
     <dimen name="margin">16dp</dimen>
     <dimen name="padding.medium">10dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 
 </resources>

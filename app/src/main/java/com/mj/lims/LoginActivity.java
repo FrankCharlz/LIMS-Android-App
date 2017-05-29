@@ -1,6 +1,8 @@
 package com.mj.lims;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +22,13 @@ public class LoginActivity extends AppCompatActivity implements Callback {
 
     private EditText edUsername, edPassword;
     private ProgressDialog pdiag;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        context = this;
 
         edUsername = (EditText) findViewById(R.id.username);
         edPassword = (EditText) findViewById(R.id.password);
@@ -65,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements Callback {
 
     @Override
     public void onFailure(Call call, IOException e) {
+        loginFailed("Login failed:\n"+e.getLocalizedMessage());
         hideDialog();
     }
 
@@ -74,20 +79,47 @@ public class LoginActivity extends AppCompatActivity implements Callback {
         String body = response.body().string().trim();
         MyApp.log("response body: "+body);
         if (response.isSuccessful()) {
-
+            //// TODO: 29-May-17 kuna shida hapa
             if (body.length() > 10) {
                 body = body.substring(1);
                 body = body.substring(0, (body.length() -1));
                 MyApp.log("user: "+body);
                 User user = MyApp.getGson().fromJson(body, User.class);
                 saveUser(user);
+                Remember.putBoolean(Constants.SIGNED_IN, true);
+                loginSuccess();
             } else {
                 MyApp.log("Failed to login, credentials");
+                loginFailed("Failed to login:\nMake sure you entered correct credentials");
             }
         } else {
             MyApp.log("Login request not successful");
+            loginFailed("Failed to login:\nNetwork error");
         }
 
+    }
+
+    private void loginFailed(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Snackbar.make(
+                        findViewById(android.R.id.content),
+                        message,
+                        Snackbar.LENGTH_LONG
+                ).show();
+            }
+        });
+    }
+
+    private void loginSuccess() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(context, MainActivity.class));
+                finish();
+            }
+        });
     }
 
 
@@ -95,6 +127,8 @@ public class LoginActivity extends AppCompatActivity implements Callback {
         Remember.putInt("id", user.id);
         Remember.putInt("role_id", user.role_id);
         Remember.putLong("last_login", System.currentTimeMillis());
+        Remember.putString(Constants.USER_FULL_NAME, user.firstname+" "+user.othernames);
+        Remember.putString(Constants.USER_PHONE_NUMBER, user.phone);
     }
 
     @Override

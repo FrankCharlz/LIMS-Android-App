@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.mj.lims.MainActivity">
 
-    <TextView
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_activity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <com.mj.lims.DopeTextView
+            android:id="@+id/toolbar_title"
+            style="@style/ToolbarTitle"
+            android:text="Home"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <fragment
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Shiiiiiiiiiiiiiiit"/>
+        android:name="android.webkit.WebViewFragment"
+        />
 
 
-
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="23dp" />
-
-
-</RelativeLayout>
+</LinearLayout>
