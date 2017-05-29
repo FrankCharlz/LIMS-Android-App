@@ -12,8 +12,7 @@ public class LauncherActivity extends Activity {
 
         MyApp.log("signed in: "+Remember.getBoolean(Constants.SIGNED_IN, false));
 
-        if(Remember.getBoolean(Constants.SIGNED_IN, true)) {
-            Remember.putBoolean(Constants.SIGNED_IN, false);
+        if(Remember.getBoolean(Constants.SIGNED_IN, false)) {
             startActivity(new Intent(this, MainActivity.class));
         } else {
             //go to login

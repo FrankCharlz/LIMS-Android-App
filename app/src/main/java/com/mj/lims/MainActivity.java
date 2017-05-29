@@ -1,5 +1,7 @@
 package com.mj.lims;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,14 +27,16 @@ public class MainActivity extends AppCompatActivity implements
 
     private DopeTextView tvTitle;
     private FragmentManager fragmentManager;
-    private Toolbar toolbar;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar  = (Toolbar) findViewById(R.id.main_activity_toolbar);
+        context = this;
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_toolbar);
         setSupportActionBar(toolbar);
 
         tvTitle = (DopeTextView) toolbar.findViewById(R.id.toolbar_title);
@@ -90,21 +94,48 @@ public class MainActivity extends AppCompatActivity implements
         if (drawerItem != null) {
             MyApp.log("Item clicked: "+drawerItem.toString());
 
-            switch ((int)drawerItem.getIdentifier()) {
-                case 1:
+            int userId = Remember.getInt(Constants.USER_ID, -1);
+            if (userId < 0) {
+                MyApp.log("User ID not proper");
+                return false;
             }
 
+            String url = Constants.BASE_URL, title="";
 
-            String[] urls = new String[] {
-                    "https://news.ycombinator.com/newest",
-                    "https://twitter.com/",
-                    "https://instagram.com/"
-            };
+            switch ((int)drawerItem.getIdentifier()) {
+                case 1:
+                    url += "/app/user/"+userId+"/plots";
+                    title = "My Plots";
+                    break;
 
-            tvTitle.setText(urls[position%urls.length]);
+                case 2:
+                    url += "/app/user/"+userId+"/applications";
+                    title = "My Applications";
+                    break;
+
+                case 3:
+                    url += "/app/plots/on-sale";
+                    title = "Plots on Sale";
+                    break;
+
+                case 4:
+                    url += "/app/announcements";
+                    title = "Announcements";
+                    break;
+
+                case 5:
+                    Remember.remove(Constants.SIGNED_IN);
+                    startActivity(new Intent(context, LoginActivity.class));
+                    finish();
+                    break;
+
+                default: break;
+            }
+
+            tvTitle.setText(title);
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            MasterFragment fragment = MasterFragment.newInstance(urls[position%urls.length]);
+            MasterFragment fragment = MasterFragment.newInstance(url);
             fragmentTransaction.add(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
@@ -112,4 +143,5 @@ public class MainActivity extends AppCompatActivity implements
         }
         return false;
     }
+
 }

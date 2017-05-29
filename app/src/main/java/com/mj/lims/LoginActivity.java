@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements Callback {
 
 
     private void saveUser(User user) {
-        Remember.putInt("id", user.id);
+        Remember.putInt(Constants.USER_ID, user.id);
         Remember.putInt("role_id", user.role_id);
         Remember.putLong("last_login", System.currentTimeMillis());
         Remember.putString(Constants.USER_FULL_NAME, user.firstname+" "+user.othernames);
